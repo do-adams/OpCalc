@@ -1,0 +1,22 @@
+<component name="ArtifactManager">
+  <artifact type="javafx" name="OpCalc">
+    <output-path>$PROJECT_DIR$/out/artifacts/OpCalc</output-path>
+    <properties id="javafx-properties">
+      <options>
+        <option name="appClass" value="app.calc.Main" />
+        <option name="description" value="A basic arithmetic calculator which displays the operator procedures. Can handle calculations of enormous size (;" />
+        <option name="height" value="600" />
+        <option name="htmlParamFile" value="" />
+        <option name="paramFile" value="" />
+        <option name="title" value="OpCalc" />
+        <option name="vendor" value="Damian Adams" />
+        <option name="width" value="700" />
+      </options>
+    </properties>
+    <root id="root">
+      <element id="archive" name="OpCalc.jar">
+        <element id="module-output" name="OpCalc" />
+      </element>
+    </root>
+  </artifact>
+</component>

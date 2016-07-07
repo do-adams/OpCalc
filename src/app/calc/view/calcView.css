@@ -1,0 +1,58 @@
+@font-face {
+    font-family: 'Varela Round';
+    src:url("VarelaRound-Regular.ttf");
+}
+
+* {
+  -fx-font-family: 'Varela Round';
+  -fx-alignment: center;
+  -fx-text-fill: #fff;
+}
+
+#container {
+    -fx-background: #35B55C;
+    -fx-pref-width: 700px;
+    -fx-padding: 50px;
+    -fx-spacing: 20px;
+}
+
+#title {
+    -fx-font-size: 92px;
+    -fx-fit-height: 34px;
+}
+
+#instructions {
+    -fx-font-size: 20px;
+}
+
+.button {
+  -fx-border-radius: 6px;
+  -fx-border-width: 2px;
+  -fx-border-style: solid;
+  -fx-border-color: #fff;
+  -fx-background-color: none;
+  -fx-text-fill: #fff;
+  -fx-fill-width: true;
+  -fx-cursor: pointer;
+  -fx-font-size: 20px;
+}
+
+.text-area {
+    -fx-pref-width: 300px;
+    -fx-pref-row-count: 3;
+    -fx-border-radius: 6px;
+    -fx-border-width: 2px;
+    -fx-border-color: #fff;
+    -fx-border-style: solid;
+    -fx-font-size: 20px;
+    -fx-text-fill: #000;
+}
+
+#textOutput {
+     -fx-pref-width: 350px;
+     -fx-background-color: #202428;
+     -fx-font-size: 52px;
+     -fx-line-height: 80px;
+     -fx-border-radius: 8px;
+     -fx-letter-spacing: 10px;
+}
