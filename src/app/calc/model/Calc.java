@@ -36,6 +36,10 @@ public class Calc {
     //Takes an input string as argument, generates valid input, infix, and postfix data and stores it.
 
     private char[] validate(String input) throws IllegalArgumentException {
+        //In case of empty input
+        if (input.length() == 0)
+            throw new IllegalArgumentException("Please enter valid input");
+
         input = input.trim();
         //Removes newline and whitespace characters at the end and beginning of the input expression.
         input = input.replace("\r\n", " ").replace("\n", " ");
@@ -43,7 +47,7 @@ public class Calc {
         input = removeElem(input, " ");
         //Removes whitespace in-between.
 
-        if(input.charAt(0) == ('-')) //In the case that the first number in the input is negative.
+        if (input.charAt(0) == ('-')) //In the case that the first number in the input is negative.
             input = "0" + input.substring(0, input.length());
 
         inCaseOfSingleNum(input);
@@ -55,18 +59,18 @@ public class Calc {
         int counter = 0;
         int parenthesisOne = 0, parenthesisTwo = 0;
         for (char ch : infix) { //Runs a variety of checks on user input (ugh, you don't even want to know).
-             if (ch == '(' || ch == ')') {
+            if (ch == '(' || ch == ')') {
                 if (ch == '(')
                     parenthesisOne++;
                 if (ch == ')')
-                 parenthesisTwo++;
+                    parenthesisTwo++;
             }
 
             if (!Character.isDigit(infix[0]) && infix[0] != '(')
                 throw new IllegalArgumentException("Incorrect input: cannot start an expression with " + infix[0]);
 
             if (!Character.isDigit(ch) && ch != '*' && ch != '/' && ch != '+' && ch != '-'
-                    && ch!= '(' && ch != ')' && ch != '.')
+                    && ch != '(' && ch != ')' && ch != '.')
                 throw new IllegalArgumentException("Incorrect character: " + ch);
 
             if (ch == '(' && Character.isDigit(previous) && counter != 0)
@@ -82,7 +86,7 @@ public class Calc {
                     && ch != '(' && ch != ')' && previous != '(' && previous != ')')
                 throw new IllegalArgumentException("Incorrect sequence of operators: " + previous + ch);
 
-            if (!Character.isDigit(infix[infix.length - 1]) && infix[infix.length-1] != ')')
+            if (!Character.isDigit(infix[infix.length - 1]) && infix[infix.length - 1] != ')')
                 throw new IllegalArgumentException("Incorrect input: cannot end an expression with " + infix[infix.length - 1]);
             previous = ch;
             counter++;
@@ -107,11 +111,11 @@ public class Calc {
     private void inCaseOfSingleNum(String input) throws IllegalArgumentException {
         char[] infix = input.toCharArray();
         boolean areThereChars = false;
-        for(char ch : infix) //Checks to see if the input string was just one single number.
-            if (!Character.isDigit(ch) && ch != '.' && ch!= '(' && ch != ')')
+        for (char ch : infix) //Checks to see if the input string was just one single number.
+            if (!Character.isDigit(ch) && ch != '.' && ch != '(' && ch != ')')
                 areThereChars = true;
 
-        if(!areThereChars) {
+        if (!areThereChars) {
             input = input.replace("(", "");
             input = input.replace(")", "");
             int decimalCount = 0;
@@ -156,9 +160,8 @@ public class Calc {
                     decimalCount++;
                 if (decimalCount > 1)
                     throw new IllegalArgumentException("Invalid decimal number.");
-            }
-            else {
-                if(numString != "") {
+            } else {
+                if (numString != "") {
                     number = new BigDecimal(numString);
                     mInfix.add(number);
                     decimalCount = 0;
@@ -178,17 +181,15 @@ public class Calc {
             if (obj instanceof BigDecimal)
                 mPostfix.add(obj);
             else if (obj.equals('('))
-                mCharStack.add((Character)obj);
+                mCharStack.add((Character) obj);
             else if (obj.equals(')') && mCharStack.peek() != '(') {
                 do {
                     mPostfix.add(mCharStack.pop());
                 } while (mCharStack.peek() != '(');
                 mCharStack.pop();
-            }
-            else if (obj.equals(')') && mCharStack.peek() == '(') {
+            } else if (obj.equals(')') && mCharStack.peek() == '(') {
                 mCharStack.pop();
-            }
-            else if (!(obj instanceof BigDecimal)) {
+            } else if (!(obj instanceof BigDecimal)) {
                 if (Character.isDigit(mCharStack.peek()))
                     mCharStack.push((Character) obj);
                 else {
@@ -235,7 +236,7 @@ public class Calc {
 
         for (Object obj : mPostfix) {
             if (obj instanceof BigDecimal) {
-                mNumStack.push((BigDecimal)obj);
+                mNumStack.push((BigDecimal) obj);
                 scaleOfNum = (BigDecimal) obj;
 
                 if (!scaleOfNum.equals(new BigDecimal(0)))
@@ -245,7 +246,7 @@ public class Calc {
                 nextToLast = mNumStack.pop();
                 product = evaluateArithmetic((Character) obj, nextToLast, last);
 
-                mOperations.add(nextToLast + " " + (Character)obj + " " +
+                mOperations.add(nextToLast + " " + (Character) obj + " " +
                         last + " = " + product + System.getProperty("line.separator"));
                 mNumStack.push(product);
             }
@@ -277,11 +278,12 @@ public class Calc {
                 throw new IllegalArgumentException("Error evaluating arithmetic operation: " + num1 + op + num2);
         }
     }
+
     //Determines what mathematical operation to execute based on the operator passed as argument.
     //Uses two numbers as input.
     public String getOperations() {
         String operationStatement = "";
-        for(String str : mOperations)
+        for (String str : mOperations)
             operationStatement += str;
         return operationStatement;
     }
