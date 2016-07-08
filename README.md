@@ -1,5 +1,5 @@
 # OpCalc
-A nifty calculator with an overpowering attitude.
+A nifty JavaFX calculator with an overpowering attitude.
 
 ![OpCalc Image](/OpCalc Image.png?raw=true)
 
