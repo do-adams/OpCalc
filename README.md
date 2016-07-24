@@ -9,7 +9,7 @@ It supports addition, subtraction, multiplication, and division, along with pare
 
 Version 1.2 of the program even has support for displaying only significant decimal figures to the user! It utilizes the BigDecimal class for boxing numbers, so working with very large integers and decimals is not a problem.
 
-OpCalc essentially uses an implementation of the shunting-yard algorithm (infix-to-postfix conversion) in order to both display to the user the proper order of operations for arithmetic expressions and the correct result. It does not aim to be an extensive calculator, but merely a simple, useful tool for arithmetic expressions and for visualizing the problem solving process in real time.
+OpCalc essentially uses an implementation of the shunting-yard algorithm (infix-to-postfix conversion) in order to both display to the user the proper order of operations for arithmetic expressions and the correct result. It does not aim to be an extensive calculator, but merely a simple, proof-of-concept tool for arithmetic expressions and for visualizing the problem solving process in real time.
 
 Read more about it [here](https://teamtreehouse.com/community/community-code-challenge-build-your-own-calculator-app-with-the-java-skills-youve-learned).
 
